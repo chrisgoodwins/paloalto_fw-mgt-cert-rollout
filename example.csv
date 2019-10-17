@@ -1,0 +1,5 @@
+fw1.somedomain.com,US,CA,Los Angeles,SomeCompany Inc.,IT,admin@somedomain.com,fw1.somedomain.com,10.48.42.66,,RSA,2048,sha256,360
+fw2.somedomain.com,US,NV,Las Vegas,SomeCompany Inc.,IT,admin@somedomain.com,fw2.somedomain.com,10.48.42.55,jim@somedomain.com,RSA,4096,sha256,1825
+10.50.42.13,US,OR,Portland,SomeCompany Inc.,IT,admin@somedomain.com,,10.50.42.13,jeff@somedomain.com,RSA,4096,sha256,720
+172.16.42.13,US,WA,Seattle,SomeCompany Inc.,IT,admin@somedomain.com,,172.16.42.13,,RSA,2048,sha256,720
+fw3.somedomain.com,US,TX,Dallas,SomeCompany Inc.,IT,admin@somedomain.com,"[fw3.somedomain.com, captive-portal.somedomain.com]",,,RSA,2048,sha256,360

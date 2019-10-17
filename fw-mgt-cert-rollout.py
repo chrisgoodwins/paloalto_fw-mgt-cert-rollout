@@ -616,7 +616,7 @@ def menu_6():
 					item = item.replace(', ', ',')
 					item = item.replace('\n', '')
 					multiLists = re.findall(r'(?<=\[)([^\]]+)(?=\])', item)
-					item_temp = re.sub(r'(\[)([^\]]+)(\])', '_regVar_', item).split(',')
+					item_temp = re.sub(r'([\'\"]?\[)([^\]]+)(\][\'\"]?)', '_regVar_', item).split(',')
 					item_new = []
 					count = 0
 					index = 0

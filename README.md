@@ -4,6 +4,7 @@ This is a menu-driven script that automates the entire process for pushing manag
 ### Features
 - Generate CSRs in bulk
 - Integrates with Microsoft ADCS CA server, so you can easily have your CSRs signed
+- If no PKI exists, allows you to create your own CA, or use one from Panorama or firewall
 - Deploy signed certificates to firewalls in bulk
 - Create and apply SSL/TLS Certificate profiles in bulk
 - Send bulk commits
@@ -34,7 +35,10 @@ Enter your choice:
 
 ### Usage and Workflow
 1) Generate CSRs - You can do this in two ways: by adding attributes and crypto settings through the menus in the script, or by populating a CSV with the values corresponding to their firewall address. You can also use a combo of both. If you specify the attributes and crypto settings using the menus, you will need to provide a list of addresses using the menus as well. If you provide attributes and crypto setting through a CSV file, the address list should be apart of the CSV.
-2) Push the CSRs to your Microsoft ADCS CA server - The script supports both basic and NTLM authentication. It also supports the use of CA manager approval. If no manager approval is necessary, then it downloads the signed PEM certs. If CA manager approval is necessary, then it saves the request ID information for each cert request. Once pending requests are approved, you can enter the script's CA server menu again and  it will automatically recognize that it has cert requests pending, so it will download the signed PEM certs for you. If you don't use MS ADCS or don't want to use this feature, just place your signed certs in a folder called 'PAN-FW-PEMs' (within the folder where you run this script).
+2) Sign your CSRs - The script supports a number of ways to do this...
+    - If a PKI exists, and Microsoft ADCS is in use, the script integrates directly with it. It supports both basic and NTLM authentication. It also supports the use of CA manager approval. If no manager approval is necessary, then it downloads the signed PEM certs. If CA manager approval is necessary, then it saves the request ID information for each cert request. Once pending requests are approved, you can enter the script's CA server menu again and  it will automatically recognize that it has cert requests pending, so it will download the signed PEM certs for you.
+    - If a PKI exists, but doesn't use MS ADCS, you will need to manually export the CSRs from the 'PAN-FW-CSRs' folder, have them signed by your CA, then return the certs in pem format to the 'PAN-FW-PEMs' folder to continue through the workflow.
+    - If no PKI exists, you can either create a self-signed CA within this script, or you can create one on a Panorama or firewall, or any other device. If a CA is created outside of this script, just save the CA cert with the private key in pem format. They can either be saved as one .pem file or separately as .crt and .key files. They would need to be saved to a folder named 'PAN-CA-Cert' in order for the script to recognize them.
 3) Push signed certs to firewalls - Just choose the menu option to do so, the script will handle this for you.
 4) Choose the option to create and apply the SSL/TLS cert profiles. This will also associate the firewall's cert to the profile and apply the profile.
 5) Commit the firewalls - This can be done using the menu option in the script. You will have the option to step through validation on each, or push and pray.
